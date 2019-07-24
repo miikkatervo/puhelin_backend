@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
 
+app.use(express.static('build'))
 app.use(bodyParser.json())
 const tinyLogger = app.use(morgan('tiny'))
 app.use(cors())
