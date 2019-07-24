@@ -33,12 +33,12 @@ let persons = [
     
 ]
 
-app.get('/persons', (req, res) => {
+app.get('/api/persons', (req, res) => {
     tinyLogger
     res.json(persons)
   })
 
-app.get('/persons/:id', (request, response) => {
+app.get('/api/persons/:id', (request, response) => {
   tinyLogger
   const id = Number(request.params.id)
   const person = persons.find(p => p.id === id)
@@ -50,7 +50,7 @@ app.get('/persons/:id', (request, response) => {
   }
 })
 
-app.delete('/persons/:id', (request, response) => {
+app.delete('/api/persons/:id', (request, response) => {
     tinyLogger
     const id = Number(request.params.id)
     persons = persons.filter(p => p.id !== id)
@@ -63,7 +63,7 @@ app.delete('/persons/:id', (request, response) => {
     return Math.floor(Math.random() * (max - min)) + min
   }
   
-  app.post('/persons', (request, response) => {
+  app.post('/api/persons', (request, response) => {
     tinyLogger
     const body = request.body
     const old = persons.map(p => p.name).includes(body.name)
@@ -93,7 +93,7 @@ app.delete('/persons/:id', (request, response) => {
     response.json(person)
 })
 
-app.get('/info', (req, res) => {
+app.get('/api/info', (req, res) => {
   res.send(`<div><p>Phonebook has info for ${persons.length} people</p><p>${new Date()}</div>`)
 })
 
